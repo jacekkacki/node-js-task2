@@ -3,6 +3,7 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 
 const addTextWatermarkToImage = async function(inputFile, outputFile, text) {
+
   const image = await Jimp.read(inputFile);
   const font = await Jimp.loadFont(Jimp.FONT_SANS_32_BLACK);
   const textData = {
@@ -23,6 +24,7 @@ const addTextWatermarkToImage = async function(inputFile, outputFile, text) {
 };
 
 const addImageWatermarkToImage = async function(inputFile, outputFile, watermarkFile) {
+
   const image = await Jimp.read(inputFile);
   const watermark = await Jimp.read(watermarkFile);
   const x = image.getWidth() / 2 - watermark.getWidth() / 2;
