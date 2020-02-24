@@ -13,10 +13,10 @@ const addTextWatermarkToImage = async function(inputFile, outputFile, text) {
   };
 
   try {
-  image.print(font, 0, 0, textData, image.getWidth(), image.getHeight());
-  image.quality(100).write(outputFile);
-  console.log('Successfull !');
-  startApp();
+    image.print(font, 0, 0, textData, image.getWidth(), image.getHeight());
+    image.quality(100).write(outputFile);
+    console.log('Successfull !');
+    startApp();
   }
   catch(error) {
     console.log('Something went wrong... Try again!');
@@ -31,13 +31,13 @@ const addImageWatermarkToImage = async function(inputFile, outputFile, watermark
   const y = image.getHeight() / 2 - watermark.getHeight() / 2;
 
   try {
-  image.composite(watermark, x, y, {
+    image.composite(watermark, x, y, {
     mode: Jimp.BLEND_SOURCE_OVER,
     opacitySource: 0.5,
   });
-  image.quality(100).write(outputFile);
-  console.log('Successfull !');
-  startApp();
+    image.quality(100).write(outputFile);
+    console.log('Successfull !');
+    startApp();
   }
   catch(error) {
     console.log('Something went wrong... Try again!');
@@ -67,7 +67,8 @@ const startApp = async () => {
     type: 'input',
     message: 'What file do you want to mark?',
     default: 'test.jpg',
-  }, {
+  },
+  {
     name: 'watermarkType',
     type: 'list',
     choices: ['Text watermark', 'Image watermark'],
@@ -97,9 +98,9 @@ const startApp = async () => {
     options.watermarkImage = image.filename;
 
     if (fs.existsSync('./img/' + options.inputImage) && fs.existsSync('./img/' + options.watermarkImage)) {
-    addImageWatermarkToImage('./img/' + options.inputImage, prepareOutputFilename(options.inputImage), './img/' + options.watermarkImage);
+      addImageWatermarkToImage('./img/' + options.inputImage, prepareOutputFilename(options.inputImage), './img/' + options.watermarkImage);
     } else {
-    console.log('Something went wrong... Try again');
+      console.log('Something went wrong... Try again');
     }
   }
 }

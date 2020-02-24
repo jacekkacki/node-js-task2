@@ -2,8 +2,11 @@
   "name": "node-js-task2",
   "version": "1.0.0",
   "description": "Watermark",
-  "main": "index.js",
+  "main": "app.js",
   "license": "MIT",
+  "scripts": {
+    "start": "node app.js"
+  },
   "dependencies": {
     "inquirer": "6.5.0",
     "jimp": "0.6.4"
